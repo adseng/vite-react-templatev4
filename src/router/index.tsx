@@ -1,12 +1,20 @@
-import Home from '@/views/Home'
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'
+import { ROUTES } from '@/router/settings'
+import Layout from '@/widgets/Layout'
+import { lazy } from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+
+const AboutLazy = lazy(() => import('@/widgets/About'))
 
 export default function App() {
     return (
-        <Router>
+        <Router future={{ v7_startTransition: false, v7_relativeSplatPath: true }}>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<div>about</div>} />
+                <Route path={ROUTES.HOME} element={<Layout />}>
+                    <Route path={ROUTES.ABOUT} element={<AboutLazy />} />
+                </Route>
+
+                {/*test*/}
+                {/* <Route path="/test" element={<div>test</div>} /> */}
             </Routes>
         </Router>
     )

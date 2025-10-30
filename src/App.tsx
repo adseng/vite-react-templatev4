@@ -3,6 +3,7 @@ import zhCh from 'antd/locale/zh_CN'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import Router from './router'
+import { ErrorBoundary } from 'react-error-boundary'
 
 dayjs.locale('zh-cn')
 
@@ -12,12 +13,16 @@ function App() {
             <ConfigProvider
                 theme={{
                     token: {
+                        colorText: '#242f57',
                         fontFamily: "'NotoSans', sans-serif",
+                        controlHeight: 40,
                     },
                 }}
                 locale={zhCh}>
                 <AppProvider>
-                    <Router />
+                    <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                        <Router />
+                    </ErrorBoundary>
                 </AppProvider>
             </ConfigProvider>
         </>

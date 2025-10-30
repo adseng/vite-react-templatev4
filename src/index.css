@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
     font-family: 'NotoSans';
@@ -6,12 +6,47 @@
 }
 
 * {
-
     /* 开发测试用 */
     /*outline: 0.1px solid rgba(255, 0, 0, 0.1);*/
 }
 
 :root {
     font-family: 'NotoSans', sans-serif;
+    color: #242f57;
     background: #f4f7fc;
+    overflow: overlay;
+}
+
+/* 滚动条整体样式（细窄+透明基础） */
+::-webkit-scrollbar {
+    width: 6px; /* 滚动条宽度（细窄） */
+    height: 6px; /* 横向滚动条高度（关键：设为3px更细窄） */
+}
+
+/* 滚动条轨道（背景，高透明） */
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* 几乎透明的轨道 */
+    border-radius: 3px;
+}
+
+/* 滚动条滑块（半透明，hover时加深） */
+::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.3); /* 默认半透明 */
+    border-radius: 3px;
+    transition: background 0.2s; /* 过渡动画更丝滑 */
+}
+
+/* 滑块hover状态（增加不透明度，更清晰） */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.6); /* hover时更明显 */
+}
+
+/* 隐藏箭头按钮（保持无箭头） */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* 滚动时的状态优化（可选） */
+::-webkit-scrollbar-thumb:active {
+    background: rgba(80, 80, 80, 0.7); /* 点击拖动时更深 */
 }
